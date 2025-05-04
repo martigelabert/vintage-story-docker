@@ -1,0 +1,17 @@
+services:
+  vs-server:
+    #entrypoint:  ["tail", "-f", "/dev/null"]
+    image: vs-host-image:latest
+    volumes:
+      - $DATADIR:/var/vintagestory/data
+    ports:
+      - "42420:42420"
+    configs:
+      - source: serverconfig
+        target: /var/vintagestory/data/serverconfig.json
+configs:
+  serverconfig:
+    file: ./serverconfig.json
+#volumes:
+#  vsdata:
+
